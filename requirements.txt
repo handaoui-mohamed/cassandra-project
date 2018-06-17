@@ -1,2 +1,4 @@
 uuid == 1.30
 cassandra-driver == 1.11.0
+beautifulsoup4==4.6.0
+requests==2.19.1
