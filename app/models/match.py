@@ -10,7 +10,7 @@ class Match(Base):
     tournament = columns.Text()
     competitor_1 = columns.Map(columns.Text(), columns.Integer())
     competitor_2 = columns.Map(columns.Text(), columns.Integer())
-    result = columns.Bytes()
+    result = columns.SmallInt()
 
     def get_data(self):
         return {

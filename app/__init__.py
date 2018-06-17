@@ -19,6 +19,8 @@ print("Synchronizing Completed...")
 
 print("App started!")
 
-print("Starting scraping...")
+print("Starting scrapping...")
+
 scrap()
-print("Starting finiched...")
+
+print("Scrapping finiched...")

@@ -51,7 +51,7 @@ def scrap():
                 elif(score[0] < score[1]):
                     result = 2  # competitor 2 is the winner
 
-                match = Match(
+                match = Match.create(
                     date=match_date,
                     venue=match_venue,
                     tournament=tournament,
@@ -60,6 +60,6 @@ def scrap():
                     result=result
                 )
 
-                # match.save()
+                match.save()
 
-                # print(match.get_data())
+                print(match.get_data())
