@@ -1,0 +1,2 @@
+uuid == 1.30
+cassandra-driver == 1.11.0

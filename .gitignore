@@ -1,0 +1,3 @@
+CassandraENV
+*.pyc
+__pycache__
