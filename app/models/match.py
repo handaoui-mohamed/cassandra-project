@@ -1,6 +1,9 @@
+from types import SimpleNamespace
 from cassandra.cqlengine import columns
 from app.models.base import Base
 import uuid
+
+results = SimpleNamespace(**{'DRAW': 0, 'WIN': 1, 'LOSS': 2})
 
 
 class Match(Base):

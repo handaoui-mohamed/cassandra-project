@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from cassandra.cqlengine import connection
-from app.models.match import Match
+from app.models.match import Match, results
 
 PARSER = "html.parser"
 BASE_URL = "https://eu-football.info/_matches.php?page="
@@ -28,7 +28,7 @@ def scrap():
                 match_id = cells[0].get_text().strip().replace('.', '')
 
                 match_date = cells[1].get_text().strip().split('.')
-                match_date[0], match_date[2] = match_date[2], match_date[1]
+                match_date[0], match_date[2] = match_date[2], match_date[0]
                 match_date = '-'.join(str(x) for x in match_date)
 
                 match_venue = cells[2].get_text().strip()
@@ -45,11 +45,11 @@ def scrap():
                 competitor_2 = {}
                 competitor_2[cells[6].get_text().strip()] = score[1]
 
-                result = 0  # draw
+                result = results.DRAW  # draw
                 if(score[0] > score[1]):
-                    result = 1  # competitor 1 is the winner
+                    result = results.WIN  # competitor 1 is the winner
                 elif(score[0] < score[1]):
-                    result = 2  # competitor 2 is the winner
+                    result = results.LOSS  # competitor 2 is the winner
 
                 match = Match.create(
                     date=match_date,
@@ -62,4 +62,4 @@ def scrap():
 
                 match.save()
 
-                print(match.get_data())
+                # print(match.get_data())
