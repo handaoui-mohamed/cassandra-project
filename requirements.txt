@@ -2,3 +2,5 @@ uuid == 1.30
 cassandra-driver == 1.11.0
 beautifulsoup4==4.6.0
 requests==2.19.1
+flask==1.0.2
+flask_cors==3.0.6
