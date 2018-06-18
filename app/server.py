@@ -9,4 +9,4 @@ server.config.from_object('config')
 
 cors = CORS(server, resources={r"/api/*": {"origins": "*"}})
 # import APIs
-# from app.user import views
+from app.views import match

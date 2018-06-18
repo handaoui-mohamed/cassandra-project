@@ -8,7 +8,7 @@ results = SimpleNamespace(**{'DRAW': 0, 'WIN': 1, 'LOSS': 2})
 
 class Match(Base):
     id = columns.UUID(primary_key=True, default=uuid.uuid4)
-    date = columns.Date()
+    date = columns.Text()
     venue = columns.Text()
     tournament = columns.Text()
     competitor_1 = columns.Map(columns.Text(), columns.Integer())

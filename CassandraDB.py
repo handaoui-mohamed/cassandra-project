@@ -8,7 +8,6 @@ class CassandraDB:
     def connect(self, nodes=[]):
         cluster = Cluster()
         session = cluster.connect(nodes)
-        session.execute("DROP keyspace IF EXISTS %s" % KEYSPACE)
         session.execute(
             """
             CREATE KEYSPACE IF NOT EXISTS %s WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor': 1};
@@ -16,3 +15,8 @@ class CassandraDB:
         )
         session = cluster.connect(keyspace=KEYSPACE)
         return session
+
+    def drop(self, nodes=[]):
+        cluster = Cluster()
+        session = cluster.connect(nodes)
+        session.execute("DROP keyspace IF EXISTS %s" % KEYSPACE)

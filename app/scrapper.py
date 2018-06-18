@@ -1,12 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-from cassandra.cqlengine import connection
 from app.models.match import Match, results
 
 PARSER = "html.parser"
 BASE_URL = "https://eu-football.info/_matches.php?page="
 PAGES = 540
-connection.setup(['127.0.0.1'], "cqlengine", protocol_version=3)
 
 
 def scrap():
